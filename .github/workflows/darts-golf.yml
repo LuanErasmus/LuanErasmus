@@ -1,0 +1,82 @@
+name: Darts Golf
+
+on:
+  issues:
+    types: [opened]
+
+permissions: {}
+
+concurrency:
+  group: darts-golf
+  cancel-in-progress: false
+
+jobs:
+  play:
+    # Only game issues from real users, and never in forks of this repo.
+    if: >-
+      github.repository == 'LuanErasmus/LuanErasmus' &&
+      startsWith(github.event.issue.title, 'dartsgolf|') &&
+      github.event.issue.user.type != 'Bot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Play round
+        id: game
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          PLAYER_LOGIN: ${{ github.event.issue.user.login }}
+          PLAYER_TYPE: ${{ github.event.issue.user.type }}
+          COMMENT_FILE: ${{ runner.temp }}/comment.md
+        run: node game/src/main.mjs
+
+      - name: Verify only allowed files changed
+        if: steps.game.outputs.action == 'play'
+        run: |
+          set -euo pipefail
+          changed="$(git status --porcelain --untracked-files=all | awk '{print $2}' | sort)"
+          echo "Changed files:"; echo "$changed"
+          allowed="$(printf 'README.md\ngame/state.json\n')"
+          extra="$(comm -23 <(echo "$changed") <(echo "$allowed"))"
+          if [ -n "$extra" ]; then
+            echo "::error::Unexpected file changes: $extra"
+            exit 1
+          fi
+
+      - name: Commit and push
+        if: steps.game.outputs.action == 'play'
+        env:
+          PLAYER_LOGIN: ${{ github.event.issue.user.login }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- README.md game/state.json
+          git commit -m "🎯 Darts Golf round by @${PLAYER_LOGIN}"
+          if ! git push origin "HEAD:${DEFAULT_BRANCH}"; then
+            git pull --rebase origin "${DEFAULT_BRANCH}"
+            git push origin "HEAD:${DEFAULT_BRANCH}"
+          fi
+
+      - name: Reply, close and lock issue
+        if: steps.game.outputs.action == 'play' || steps.game.outputs.action == 'reject'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ACTION: ${{ steps.game.outputs.action }}
+          COMMENT_FILE: ${{ runner.temp }}/comment.md
+        run: |
+          set -euo pipefail
+          gh issue comment "$ISSUE_NUMBER" --body-file "$COMMENT_FILE"
+          if [ "$ACTION" = "play" ]; then reason="completed"; else reason="not planned"; fi
+          gh issue close "$ISSUE_NUMBER" --reason "$reason"
+          gh issue lock "$ISSUE_NUMBER" --reason resolved || true

@@ -28,6 +28,27 @@ jobs:
         with:
           ref: ${{ github.event.repository.default_branch }}
 
+      - name: Announce pickup
+        if: contains(fromJSON('["dartsgolf|safe","dartsgolf|aggressive","dartsgolf|yolo"]'), github.event.issue.title)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PLAYER_LOGIN: ${{ github.event.issue.user.login }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${GH_REPO}/issues/${ISSUE_NUMBER}/reactions" -f content=rocket --silent || true
+          lines=(
+            "The crowd goes quiet as you step up to the oche... chalking your darts now!"
+            "Fore! The dartboard is the green today. Grab a drink while the darts fly!"
+            "The bar falls silent as you line up the first throw. No pressure..."
+            "You've swapped the 9-iron for three tungsten darts. Let's see what you've got!"
+            "Ladies and gentlemen... it's DARTS GOLF TIME! Your round is warming up."
+          )
+          body="$(printf '## 🎯 @%s 🆚 Luan: Game on! ⛳\n\n%s\n\nYour scorecard lands here in a few seconds. Can you top the leaderboard? 🏆' \
+            "$PLAYER_LOGIN" "${lines[RANDOM % ${#lines[@]}]}")"
+          gh issue comment "$ISSUE_NUMBER" --body "$body"
+
       - name: Play round
         id: game
         env:

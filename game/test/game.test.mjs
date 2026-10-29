@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ODDS, RESULTS, isGameTitle, parseTitle, playRound } from '../src/engine.mjs';
-import { COOLDOWN_MS, DAILY_CAP, MAX_PLAYERS, checkLimits, emptyState, leaderboard, recordRound, sanitizeState } from '../src/state.mjs';
+import { COOLDOWN_MS, DAILY_CAP, MAX_PLAYERS, checkLimits, emptyState, leaderboard, outcomeOf, recordRound, sanitizeState } from '../src/state.mjs';
 import { END, START, assertOnlySectionChanged, replaceSection } from '../src/readme.mjs';
 import { renderReadmeSection, renderScorecard } from '../src/render.mjs';
 import { run } from '../src/main.mjs';
@@ -92,7 +92,7 @@ test('sanitizeState drops malicious or malformed entries', () => {
   assert.equal(s.roundsToday, 0);
   assert.deepEqual(s.lastPlayed, {});
   assert.deepEqual(Object.keys(s.players), ['good']);
-  assert.deepEqual(s.players.good, { best: 5, bestAt: '2026-01-01T00:00:00Z', rounds: 1 });
+  assert.deepEqual(s.players.good, { best: 5, bestAt: '2026-01-01T00:00:00Z', rounds: 1, wins: 0 });
   assert.deepEqual(s.recent, []);
 });
 
@@ -108,19 +108,49 @@ test('README section replacement only touches the marked region', () => {
 });
 
 test('renderers produce markdown without raw HTML from inputs', () => {
-  let s = recordRound(emptyState(), 'alice', { style: 'yolo', total: 3 }, new Date('2026-10-29T10:00:00Z'));
+  let s = recordRound(emptyState(), 'alice', { style: 'yolo', total: 3 }, new Date('2026-10-29T10:00:00Z'), 7);
   const section = renderReadmeSection(s);
   assert.match(section, /\[@alice\]\(https:\/\/github\.com\/alice\)/);
+  assert.match(section, /Players 1 – 0 Luan/);
+  assert.match(section, /beat Luan/);
   assert.ok(!section.includes(START) && !section.includes(END));
-  const card = renderScorecard('alice', playRound('safe', fixedRng([0])));
-  assert.match(card, /Total/);
+  const card = renderScorecard('alice', playRound('safe', fixedRng([0])), playRound('safe', fixedRng([0, 999])), () => 0);
+  assert.match(card, /@alice\]\(https:\/\/github\.com\/alice\) 🆚 Luan/);
+  assert.match(card, /You beat Luan/);
+});
+
+test('versus: outcome, tally and per-player wins are tracked', () => {
+  const t = (h) => new Date(Date.UTC(2026, 0, 1, h));
+  assert.equal(outcomeOf(5, 9), 'win');
+  assert.equal(outcomeOf(9, 5), 'loss');
+  assert.equal(outcomeOf(7, 7), 'draw');
+  let s = recordRound(emptyState(), 'alice', { style: 'safe', total: 5 }, t(0), 9);
+  s = recordRound(s, 'bob', { style: 'safe', total: 9 }, t(1), 5);
+  s = recordRound(s, 'carol', { style: 'safe', total: 7 }, t(2), 7);
+  s = recordRound(s, 'alice', { style: 'safe', total: 4 }, t(30), 8);
+  assert.deepEqual(s.versus, { player: 2, luan: 1, draw: 1 });
+  assert.equal(s.players.alice.wins, 2);
+  assert.equal(s.players.bob.wins, 0);
+  assert.deepEqual([s.recent[0].luan, s.recent[0].outcome], [8, 'win']);
+});
+
+test('sanitizeState migrates legacy state without versus data', () => {
+  const s = sanitizeState({
+    players: { old: { best: 7, bestAt: '2026-10-29T08:49:57.079Z', rounds: 1 } },
+    recent: [{ login: 'old', style: 'safe', total: 7, at: '2026-10-29T08:49:57.079Z' }],
+    versus: { player: 'x', luan: 2 },
+  });
+  assert.deepEqual(s.versus, { player: 0, luan: 2, draw: 0 });
+  assert.equal(s.players.old.wins, 0);
+  assert.ok(!('outcome' in s.recent[0]));
+  assert.match(renderReadmeSection(s), /@old\]\(https:\/\/github\.com\/old\) shot \*\*7\*\* \(-2\) on/);
 });
 
 function sandbox() {
   const dir = mkdtempSync(join(tmpdir(), 'dartsgolf-'));
   mkdirSync(join(dir, 'game'));
   copyFileSync(join(repoRoot, 'README.md'), join(dir, 'README.md'));
-  copyFileSync(join(repoRoot, 'game', 'state.json'), join(dir, 'game', 'state.json'));
+  writeFileSync(join(dir, 'game', 'state.json'), JSON.stringify(emptyState()));
   return dir;
 }
 

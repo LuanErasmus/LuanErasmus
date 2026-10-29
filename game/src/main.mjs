@@ -21,7 +21,8 @@ export function run({ title, login, userType, root, now = new Date(), rng }) {
   if (!limit.ok) return { action: 'reject', comment: renderRejection(limit.reason, limit.nextAt) };
 
   const round = playRound(style, rng);
-  const next = recordRound(state, login, round, now);
+  const luanRound = playRound(style, rng);
+  const next = recordRound(state, login, round, now, luanRound.total);
 
   const readme = readFileSync(readmePath, 'utf8');
   const updated = replaceSection(readme, renderReadmeSection(next));
@@ -29,7 +30,7 @@ export function run({ title, login, userType, root, now = new Date(), rng }) {
 
   writeFileSync(statePath, `${JSON.stringify(next, null, 2)}\n`);
   writeFileSync(readmePath, updated);
-  return { action: 'play', comment: renderScorecard(login, round), round };
+  return { action: 'play', comment: renderScorecard(login, round, luanRound, rng), round, luanRound };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -42,5 +43,5 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   });
   if (result.comment && env.COMMENT_FILE) writeFileSync(env.COMMENT_FILE, result.comment);
   if (env.GITHUB_OUTPUT) appendFileSync(env.GITHUB_OUTPUT, `action=${result.action}\n`);
-  console.log(`Darts Golf: ${result.action}${result.round ? ` (total ${result.round.total})` : ''}`);
+  console.log(`Darts Golf: ${result.action}${result.round ? ` (player ${result.round.total} vs Luan ${result.luanRound.total})` : ''}`);
 }

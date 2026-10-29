@@ -15,13 +15,13 @@ _Build useful things, learn in public, and contribute back to the community._
 
 ## 🎯⛳ Play Darts Golf
 
-Got 10 seconds? Throw a quick **3-hole round** of darts golf right here. You get one round a day, and the lowest score wins.
+Got 10 seconds? Challenge **me** to a quick **3-hole round** of darts golf. We both throw the same style, and the lowest score wins. One round a day.
 
 | [🛡️ Safe](https://github.com/LuanErasmus/LuanErasmus/issues/new?title=dartsgolf%7Csafe&body=Just+click+%22Create%22+to+throw+your+darts!+Please+don%27t+change+the+title.) | [🔥 Aggressive](https://github.com/LuanErasmus/LuanErasmus/issues/new?title=dartsgolf%7Caggressive&body=Just+click+%22Create%22+to+throw+your+darts!+Please+don%27t+change+the+title.) | [💀 YOLO](https://github.com/LuanErasmus/LuanErasmus/issues/new?title=dartsgolf%7Cyolo&body=Just+click+%22Create%22+to+throw+your+darts!+Please+don%27t+change+the+title.) |
 |:---:|:---:|:---:|
 | Steady singles | More trebles, more misses | Bullseye or bust |
 
-Pick a style and click **Create**. A bot throws your darts, comments your scorecard, and adds you to the board.
+Pick a style and click **Create**. A bot throws for both of us, posts the head-to-head scorecard, and adds you to the board.
 
 <details>
 <summary>📋 How scoring works</summary>
@@ -39,11 +39,13 @@ Each hole is a random dartboard number. Par is 3 per hole (9 for the round).
 </details>
 
 <!-- DARTSGOLF:START -->
+**⚔️ Players 0 – 0 Luan** (0 draws)
+
 **🏆 Leaderboard** (best 3-hole round, lowest wins)
 
-| # | Player | Best | vs Par | Rounds |
-|:---:|:---|:---:|:---:|:---:|
-| 🥇 | [@LuanErasmus](https://github.com/LuanErasmus) | 7 | -2 | 1 |
+| # | Player | Best | vs Par | Rounds | Wins vs Luan |
+|:---:|:---|:---:|:---:|:---:|:---:|
+| 🥇 | [@LuanErasmus](https://github.com/LuanErasmus) | 7 | -2 | 1 | 0 |
 
 **🕹️ Latest rounds**
 

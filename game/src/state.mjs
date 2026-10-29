@@ -11,7 +11,17 @@ export function isValidLogin(login) {
 }
 
 export function emptyState() {
-  return { version: 1, day: '', roundsToday: 0, totalRounds: 0, lastPlayed: {}, players: {}, recent: [] };
+  return {
+    version: 1, day: '', roundsToday: 0, totalRounds: 0,
+    versus: { player: 0, luan: 0, draw: 0 },
+    lastPlayed: {}, players: {}, recent: [],
+  };
+}
+
+const OUTCOMES = new Set(['win', 'loss', 'draw']);
+
+export function outcomeOf(playerTotal, luanTotal) {
+  return playerTotal < luanTotal ? 'win' : playerTotal > luanTotal ? 'loss' : 'draw';
 }
 
 const isInt = (n) => Number.isInteger(n) && n >= 0;
@@ -24,18 +34,23 @@ export function sanitizeState(raw) {
   if (typeof raw.day === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(raw.day)) s.day = raw.day;
   if (isInt(raw.roundsToday)) s.roundsToday = raw.roundsToday;
   if (isInt(raw.totalRounds)) s.totalRounds = raw.totalRounds;
+  for (const k of ['player', 'luan', 'draw']) if (isInt(raw.versus?.[k])) s.versus[k] = raw.versus[k];
   for (const [login, at] of Object.entries(raw.lastPlayed ?? {})) {
     if (isValidLogin(login) && isIso(at)) s.lastPlayed[login] = at;
   }
   for (const [login, p] of Object.entries(raw.players ?? {})) {
     if (isValidLogin(login) && p && isInt(p.best) && isInt(p.rounds) && isIso(p.bestAt)) {
-      s.players[login] = { best: p.best, bestAt: p.bestAt, rounds: p.rounds };
+      s.players[login] = { best: p.best, bestAt: p.bestAt, rounds: p.rounds, wins: isInt(p.wins) ? p.wins : 0 };
     }
   }
   if (Array.isArray(raw.recent)) {
     s.recent = raw.recent
       .filter((r) => r && isValidLogin(r.login) && STYLES.has(r.style) && isInt(r.total) && isIso(r.at))
-      .map(({ login, style, total, at }) => ({ login, style, total, at }))
+      .map(({ login, style, total, at, luan, outcome }) => {
+        const r = { login, style, total, at };
+        if (isInt(luan) && OUTCOMES.has(outcome)) Object.assign(r, { luan, outcome });
+        return r;
+      })
       .slice(0, RECENT_COUNT);
   }
   return s;
@@ -54,7 +69,7 @@ export function checkLimits(state, login, now) {
   return { ok: true };
 }
 
-export function recordRound(state, login, round, now) {
+export function recordRound(state, login, round, now, luanTotal) {
   const at = now.toISOString();
   const day = utcDay(now);
   const next = sanitizeState(state);
@@ -67,10 +82,12 @@ export function recordRound(state, login, round, now) {
     if (now.getTime() - Date.parse(t) >= COOLDOWN_MS) delete next.lastPlayed[l];
   }
 
+  const won = luanTotal !== undefined && outcomeOf(round.total, luanTotal) === 'win' ? 1 : 0;
   const prev = next.players[login];
-  if (!prev) next.players[login] = { best: round.total, bestAt: at, rounds: 1 };
+  if (!prev) next.players[login] = { best: round.total, bestAt: at, rounds: 1, wins: won };
   else {
     prev.rounds += 1;
+    prev.wins += won;
     if (round.total < prev.best) Object.assign(prev, { best: round.total, bestAt: at });
   }
 
@@ -79,7 +96,13 @@ export function recordRound(state, login, round, now) {
     next.players = Object.fromEntries(ranked.slice(0, MAX_PLAYERS).map((p) => [p.login, next.players[p.login]]));
   }
 
-  next.recent = [{ login, style: round.style, total: round.total, at }, ...next.recent].slice(0, RECENT_COUNT);
+  const entry = { login, style: round.style, total: round.total, at };
+  if (luanTotal !== undefined) {
+    const outcome = outcomeOf(round.total, luanTotal);
+    next.versus[{ win: 'player', loss: 'luan', draw: 'draw' }[outcome]] += 1;
+    Object.assign(entry, { luan: luanTotal, outcome });
+  }
+  next.recent = [entry, ...next.recent].slice(0, RECENT_COUNT);
   return next;
 }
 

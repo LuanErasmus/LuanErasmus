@@ -41,13 +41,15 @@ Each hole is a random dartboard number. Par is 3 per hole (9 for the round).
 <!-- DARTSGOLF:START -->
 **🏆 Leaderboard** (best 3-hole round, lowest wins)
 
-_No rounds yet. Be the first on the board!_
+| # | Player | Best | vs Par | Rounds |
+|:---:|:---|:---:|:---:|:---:|
+| 🥇 | [@LuanErasmus](https://github.com/LuanErasmus) | 7 | -2 | 1 |
 
 **🕹️ Latest rounds**
 
-_Nothing yet._
+- 🛡️ [@LuanErasmus](https://github.com/LuanErasmus) shot **7** (-2) on 2026-10-29
 
-<sub>0 round(s) played so far.</sub>
+<sub>1 round(s) played so far.</sub>
 <!-- DARTSGOLF:END -->
 
 ## 👨‍💻 About Me

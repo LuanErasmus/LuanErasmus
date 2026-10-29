@@ -1,24 +1,14 @@
 {
   "version": 1,
   "day": "2026-10-29",
-  "roundsToday": 1,
-  "totalRounds": 1,
-  "lastPlayed": {
-    "LuanErasmus": "2026-10-29T08:49:57.079Z"
+  "roundsToday": 0,
+  "totalRounds": 0,
+  "versus": {
+    "player": 0,
+    "luan": 0,
+    "draw": 0
   },
-  "players": {
-    "LuanErasmus": {
-      "best": 7,
-      "bestAt": "2026-10-29T08:49:57.079Z",
-      "rounds": 1
-    }
-  },
-  "recent": [
-    {
-      "login": "LuanErasmus",
-      "style": "safe",
-      "total": 7,
-      "at": "2026-10-29T08:49:57.079Z"
-    }
-  ]
+  "lastPlayed": {},
+  "players": {},
+  "recent": []
 }

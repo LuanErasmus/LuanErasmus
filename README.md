@@ -11,6 +11,9 @@
 
 _Build useful things, learn in public, and contribute back to the community._
 
+[![Followers](https://img.shields.io/github/followers/LuanErasmus?label=Followers&style=for-the-badge&logo=github&color=238636)](https://github.com/LuanErasmus?tab=followers)
+[![Stars](https://img.shields.io/github/stars/LuanErasmus?affiliations=OWNER&label=Stars&style=for-the-badge&logo=github&color=d29922)](https://github.com/LuanErasmus?tab=repositories)
+
 </div>
 
 ## 🎯⛳ Play Darts Golf
@@ -45,15 +48,13 @@ Each hole is a random dartboard number. Par is 3 per hole (9 for the round).
 
 **🏆 Leaderboard** (best 3-hole round, lowest wins)
 
-| # | Player | Best | vs Par | Rounds | Wins vs Luan |
-|:---:|:---|:---:|:---:|:---:|:---:|
-| 🥇 | [@LuanErasmus](https://github.com/LuanErasmus) | 7 | -2 | 1 | 0 |
+_No rounds yet. Be the first on the board!_
 
 **🕹️ Latest rounds**
 
-- 🛡️ [@LuanErasmus](https://github.com/LuanErasmus) shot **7** (-2) on 2026-10-29
+_Nothing yet._
 
-<sub>1 round(s) played so far.</sub>
+<sub>0 round(s) played so far.</sub>
 <!-- DARTSGOLF:END -->
 
 ## 👨‍💻 About Me
@@ -69,3 +70,6 @@ Lately I'm focused on **DevSecOps, supply-chain security, Actions automation, Co
 If you're working on **GitHub security, automation, AI, open source or developer tooling**, I'd love to connect, collaborate and learn from what you're building too.
 
 [![Follow @LuanErasmus](https://img.shields.io/github/followers/LuanErasmus?label=Follow%20%40LuanErasmus&style=social)](https://github.com/LuanErasmus)
+[![Star this profile](https://img.shields.io/github/stars/LuanErasmus/LuanErasmus?label=Star%20this%20profile&style=social)](https://github.com/LuanErasmus/LuanErasmus)
+
+⭐ Enjoyed the game? A star or follow is the best high score you can give me!

@@ -1,14 +1,32 @@
 {
   "version": 1,
   "day": "2026-10-29",
-  "roundsToday": 0,
-  "totalRounds": 0,
+  "roundsToday": 1,
+  "totalRounds": 1,
   "versus": {
-    "player": 0,
+    "player": 1,
     "luan": 0,
     "draw": 0
   },
-  "lastPlayed": {},
-  "players": {},
-  "recent": []
+  "lastPlayed": {
+    "rvdintercept": "2026-10-29T16:07:42.474Z"
+  },
+  "players": {
+    "rvdintercept": {
+      "best": 4,
+      "bestAt": "2026-10-29T16:07:42.474Z",
+      "rounds": 1,
+      "wins": 1
+    }
+  },
+  "recent": [
+    {
+      "login": "rvdintercept",
+      "style": "aggressive",
+      "total": 4,
+      "at": "2026-10-29T16:07:42.474Z",
+      "luan": 13,
+      "outcome": "win"
+    }
+  ]
 }

@@ -44,17 +44,19 @@ Each hole is a random dartboard number. Par is 3 per hole (9 for the round).
 </details>
 
 <!-- DARTSGOLF:START -->
-**⚔️ Players 0 – 0 Luan** (0 draws)
+**⚔️ Players 1 – 0 Luan** (0 draws)
 
 **🏆 Leaderboard** (best 3-hole round, lowest wins)
 
-_No rounds yet. Be the first on the board!_
+| # | Player | Best | vs Par | Rounds | Wins vs Luan |
+|:---:|:---|:---:|:---:|:---:|:---:|
+| 🥇 | [@rvdintercept](https://github.com/rvdintercept) | 4 | -5 | 1 | 1 |
 
 **🕹️ Latest rounds**
 
-_Nothing yet._
+- 🔥 [@rvdintercept](https://github.com/rvdintercept) shot **4** (-5) vs Luan's **13**: 🏆 beat Luan on 2026-10-29
 
-<sub>0 round(s) played so far.</sub>
+<sub>1 round(s) played so far.</sub>
 <!-- DARTSGOLF:END -->
 
 ## 👨‍💻 About Me

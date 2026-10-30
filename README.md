@@ -63,7 +63,16 @@ I enjoy exploring the GitHub ecosystem, building open-source tools, experimentin
 
 Lately I'm focused on **DevSecOps, supply-chain security, Actions automation, Copilot & agentic AI, GitHub Apps and Azure**.
 
-**🎓 GitHub Certified:** Agentic AI Developer · Copilot · Actions · Advanced Security
+### 🎓 GitHub Certifications
+
+<p align="center">
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/agentic-ai-developer/"><img src="assets/certifications/github-agentic-ai-developer.svg" alt="GitHub Certified: Agentic AI Developer" width="140" align="middle"></a>&nbsp;&nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-copilot/"><img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/github-copilot.svg" alt="GitHub Copilot certification" width="140" align="middle"></a>&nbsp;&nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-actions/"><img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/github-actions.svg" alt="GitHub Actions certification" width="140" align="middle"></a>&nbsp;&nbsp;
+  <a href="https://learn.microsoft.com/en-us/credentials/certifications/github-advanced-security/"><img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/github-advanced-security.svg" alt="GitHub Advanced Security certification" width="140" align="middle"></a>
+</p>
+
+<sub>Badges link to Microsoft Learn certification details.</sub>
 
 ## 🤝 Let's Connect
 

@@ -44,7 +44,7 @@ Each hole is a random dartboard number. Par is 3 per hole (9 for the round).
 </details>
 
 <!-- DARTSGOLF:START -->
-**⚔️ Players 2 – 1 Luan** (0 draws)
+**⚔️ Players 2 – 1 Luan** (1 draw)
 
 **🏆 Leaderboard** (best 3-hole round, lowest wins)
 
@@ -53,14 +53,16 @@ Each hole is a random dartboard number. Par is 3 per hole (9 for the round).
 | 🥇 | [@rvdintercept](https://github.com/rvdintercept) | 4 | -5 | 1 | 1 |
 | 🥈 | [@whaakman](https://github.com/whaakman) | 9 | E | 1 | 1 |
 | 🥉 | [@ag-intercept](https://github.com/ag-intercept) | 9 | E | 1 | 0 |
+| 4 | [@LuanErasmus](https://github.com/LuanErasmus) | 9 | E | 1 | 0 |
 
 **🕹️ Latest rounds**
 
+- 🛡️ [@LuanErasmus](https://github.com/LuanErasmus) shot **9** (E) vs Luan's **9**: 🤝 drew with Luan on 2026-11-10
 - 🛡️ [@ag-intercept](https://github.com/ag-intercept) shot **9** (E) vs Luan's **7**: 😎 lost to Luan on 2026-11-10
 - 🛡️ [@whaakman](https://github.com/whaakman) shot **9** (E) vs Luan's **11**: 🏆 beat Luan on 2026-11-10
 - 🔥 [@rvdintercept](https://github.com/rvdintercept) shot **4** (-5) vs Luan's **13**: 🏆 beat Luan on 2026-10-29
 
-<sub>3 round(s) played so far.</sub>
+<sub>4 round(s) played so far.</sub>
 <!-- DARTSGOLF:END -->
 
 ## 👨‍💻 About Me

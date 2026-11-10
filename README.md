@@ -22,7 +22,7 @@ _Build useful things, learn in public, and contribute back to the community._
 
 Got 10 seconds? Challenge **me** to a quick **3-hole round** of darts golf. We both throw the same style, and the lowest score wins. One round a day.
 
-| [🛡️ Safe](https://github.com/LuanErasmus/LuanErasmus/issues/new?title=dartsgolf%7Csafe&body=Just+click+%22Create%22+to+throw+your+darts!+Please+don%27t+change+the+title.) | [🔥 Aggressive](https://github.com/LuanErasmus/LuanErasmus/issues/new?title=dartsgolf%7Caggressive&body=Just+click+%22Create%22+to+throw+your+darts!+Please+don%27t+change+the+title.) | [💀 YOLO](https://github.com/LuanErasmus/LuanErasmus/issues/new?title=dartsgolf%7Cyolo&body=Just+click+%22Create%22+to+throw+your+darts!+Please+don%27t+change+the+title.) |
+| [🛡️ Safe](https://github.com/LuanErasmus/LuanErasmus/issues/new?template=darts-golf-safe.md) | [🔥 Aggressive](https://github.com/LuanErasmus/LuanErasmus/issues/new?template=darts-golf-aggressive.md) | [💀 YOLO](https://github.com/LuanErasmus/LuanErasmus/issues/new?template=darts-golf-yolo.md) |
 |:---:|:---:|:---:|
 | Steady singles | More trebles, more misses | Bullseye or bust |
 

@@ -1,15 +1,16 @@
 {
   "version": 1,
   "day": "2026-11-10",
-  "roundsToday": 1,
-  "totalRounds": 2,
+  "roundsToday": 2,
+  "totalRounds": 3,
   "versus": {
     "player": 2,
-    "luan": 0,
+    "luan": 1,
     "draw": 0
   },
   "lastPlayed": {
-    "whaakman": "2026-11-10T12:23:06.508Z"
+    "whaakman": "2026-11-10T12:23:06.508Z",
+    "ag-intercept": "2026-11-10T12:23:21.908Z"
   },
   "players": {
     "rvdintercept": {
@@ -23,9 +24,23 @@
       "bestAt": "2026-11-10T12:23:06.508Z",
       "rounds": 1,
       "wins": 1
+    },
+    "ag-intercept": {
+      "best": 9,
+      "bestAt": "2026-11-10T12:23:21.908Z",
+      "rounds": 1,
+      "wins": 0
     }
   },
   "recent": [
+    {
+      "login": "ag-intercept",
+      "style": "safe",
+      "total": 9,
+      "at": "2026-11-10T12:23:21.908Z",
+      "luan": 7,
+      "outcome": "loss"
+    },
     {
       "login": "whaakman",
       "style": "safe",

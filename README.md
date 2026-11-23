@@ -44,24 +44,26 @@ Each hole is a random dartboard number. Par is 3 per hole (9 for the round).
 </details>
 
 <!-- DARTSGOLF:START -->
-**⚔️ Players 2 – 2 Luan** (0 draws)
+**⚔️ Players 3 – 2 Luan** (0 draws)
 
 **🏆 Leaderboard** (best 3-hole round, lowest wins)
 
 | # | Player | Best | vs Par | Rounds | Wins vs Luan |
 |:---:|:---|:---:|:---:|:---:|:---:|
 | 🥇 | [@rvdintercept](https://github.com/rvdintercept) | 4 | -5 | 1 | 1 |
-| 🥈 | [@whaakman](https://github.com/whaakman) | 9 | E | 2 | 1 |
-| 🥉 | [@ag-intercept](https://github.com/ag-intercept) | 9 | E | 1 | 0 |
+| 🥈 | [@fabiosaraiva](https://github.com/fabiosaraiva) | 8 | -1 | 1 | 1 |
+| 🥉 | [@whaakman](https://github.com/whaakman) | 9 | E | 2 | 1 |
+| 4 | [@ag-intercept](https://github.com/ag-intercept) | 9 | E | 1 | 0 |
 
 **🕹️ Latest rounds**
 
+- 🛡️ [@fabiosaraiva](https://github.com/fabiosaraiva) shot **8** (-1) vs Luan's **9**: 🏆 beat Luan on 2026-11-23
 - 💀 [@whaakman](https://github.com/whaakman) shot **10** (+1) vs Luan's **6**: 😎 lost to Luan on 2026-11-11
 - 🛡️ [@ag-intercept](https://github.com/ag-intercept) shot **9** (E) vs Luan's **7**: 😎 lost to Luan on 2026-11-10
 - 🛡️ [@whaakman](https://github.com/whaakman) shot **9** (E) vs Luan's **11**: 🏆 beat Luan on 2026-11-10
 - 🔥 [@rvdintercept](https://github.com/rvdintercept) shot **4** (-5) vs Luan's **13**: 🏆 beat Luan on 2026-10-29
 
-<sub>4 round(s) played so far.</sub>
+<sub>5 round(s) played so far.</sub>
 <!-- DARTSGOLF:END -->
 
 ## 👨‍💻 About Me

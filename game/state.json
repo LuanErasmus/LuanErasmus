@@ -1,15 +1,16 @@
 {
   "version": 1,
   "day": "2026-11-23",
-  "roundsToday": 1,
-  "totalRounds": 5,
+  "roundsToday": 2,
+  "totalRounds": 6,
   "versus": {
-    "player": 3,
+    "player": 4,
     "luan": 2,
     "draw": 0
   },
   "lastPlayed": {
-    "fabiosaraiva": "2026-11-23T12:12:56.921Z"
+    "fabiosaraiva": "2026-11-23T12:12:56.921Z",
+    "whaakman": "2026-11-23T12:25:56.674Z"
   },
   "players": {
     "rvdintercept": {
@@ -19,10 +20,10 @@
       "wins": 1
     },
     "whaakman": {
-      "best": 9,
-      "bestAt": "2026-11-10T12:23:06.508Z",
-      "rounds": 2,
-      "wins": 1
+      "best": 7,
+      "bestAt": "2026-11-23T12:25:56.674Z",
+      "rounds": 3,
+      "wins": 2
     },
     "ag-intercept": {
       "best": 9,
@@ -38,6 +39,14 @@
     }
   },
   "recent": [
+    {
+      "login": "whaakman",
+      "style": "safe",
+      "total": 7,
+      "at": "2026-11-23T12:25:56.674Z",
+      "luan": 9,
+      "outcome": "win"
+    },
     {
       "login": "fabiosaraiva",
       "style": "safe",
@@ -68,14 +77,6 @@
       "total": 9,
       "at": "2026-11-10T12:23:06.508Z",
       "luan": 11,
-      "outcome": "win"
-    },
-    {
-      "login": "rvdintercept",
-      "style": "aggressive",
-      "total": 4,
-      "at": "2026-10-29T16:07:42.474Z",
-      "luan": 13,
       "outcome": "win"
     }
   ]
